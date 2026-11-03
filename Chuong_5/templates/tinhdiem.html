@@ -1,0 +1,37 @@
+{% extends "baseC5.html" %}
+
+{% block title %}Câu 2 - Tính điểm{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h3 class="text-center mb-3">Tính điểm học phần</h3>
+            <form method="POST" action="{{ url_for('tinhdiem') }}">
+                <div class="mb-3">
+                    <label class="form-label">Điểm Chuyên cần (10%):</label>
+                    <input type="text" name="CC" value="{{ values.CC }}" class="form-control">
+                    {% if error.CC %}<div class="text-danger small">{{ error.CC }}</div>{% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Điểm Giữa kỳ (30%):</label>
+                    <input type="text" name="GK" value="{{ values.GK }}" class="form-control">
+                    {% if error.GK %}<div class="text-danger small">{{ error.GK }}</div>{% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Điểm Cuối kỳ (60%):</label>
+                    <input type="text" name="CK" value="{{ values.CK }}" class="form-control">
+                    {% if error.CK %}<div class="text-danger small">{{ error.CK }}</div>{% endif %}
+                </div>
+                <button type="submit" class="btn btn-success w-100">Tính tổng kết</button>
+            </form>
+
+            {% if tongket != "" %}
+            <div class="alert alert-success mt-3 mb-0">
+                <strong>Điểm tổng kết:</strong> {{ "%.2f"|format(tongket) }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

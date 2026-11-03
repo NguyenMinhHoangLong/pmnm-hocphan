@@ -1,0 +1,33 @@
+{% extends "baseC5.html" %}
+
+{% block title %}Giới thiệu - Chương 5{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm p-4">
+            <h2 class="text-primary mb-3">Giới thiệu bài thực hành Chương 5</h2>
+            <p class="lead">Học phần: Phát triển ứng dụng mã nguồn mở với Flask.</p>
+            <hr>
+            <h5>Danh sách các chức năng đã xây dựng:</h5>
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">
+                    <strong>Câu 1 - Máy tính cơ bản:</strong> Thực hiện các phép tính cộng, trừ, nhân, chia với xử lý lỗi chia cho 0.
+                </li>
+                <li class="list-group-item">
+                    <strong>Câu 2 - Tính điểm học phần:</strong> Tính điểm tổng kết theo trọng số Chuyên cần (10%), Giữa kỳ (30%), Cuối kỳ (60%).
+                </li>
+                <li class="list-group-item">
+                    <strong>Câu 3 - Tính chỉ số BMI:</strong> Đánh giá thể trạng chuẩn châu Á, xử lý nhập dấu phẩy và kiểm tra phạm vi hợp lệ.
+                </li>
+            </ul>
+
+            <div class="d-flex gap-2">
+                <a href="{{ url_for('calc') }}" class="btn btn-outline-primary">Thử Câu 1</a>
+                <a href="{{ url_for('tinhdiem') }}" class="btn btn-outline-success">Thử Câu 2</a>
+                <a href="{{ url_for('calculate_bmi') }}" class="btn btn-outline-danger">Thử Câu 3</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

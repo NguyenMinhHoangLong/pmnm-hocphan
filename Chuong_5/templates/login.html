@@ -1,0 +1,35 @@
+{% extends "baseC5.html" %}
+
+{% block title %}Đăng nhập{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm p-4 mt-3">
+            <h3 class="text-center mb-4">Đăng nhập tài khoản</h3>
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <!-- Tên đăng nhập (giữ lại giá trị đã nhập khi sai) -->
+                <div class="mb-3">
+                    <label class="form-label">Tên đăng nhập:</label>
+                    <input type="text" name="username" value="{{ username }}" class="form-control" placeholder="Nhập username..." required>
+                </div>
+
+                <!-- Mật khẩu (không giữ lại mật khẩu khi sai) -->
+                <div class="mb-3">
+                    <label class="form-label">Mật khẩu:</label>
+                    <input type="password" name="password" class="form-control" placeholder="Nhập password..." required>
+                </div>
+
+                <!-- Checkbox Ghi nhớ đăng nhập -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" name="remember" class="form-check-input" id="rememberCheck">
+                    <label class="form-check-label" for="rememberCheck">Ghi nhớ đăng nhập</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

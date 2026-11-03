@@ -1,0 +1,49 @@
+{% extends "baseC5.html" %}
+
+{% block title %}Câu 3 - Tính chỉ số BMI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h3 class="text-center mb-3">Tính chỉ số BMI</h3>
+            <form method="POST" action="{{ url_for('calculate_bmi') }}" novalidate>
+                <div class="mb-3">
+                    <label class="form-label">Chiều cao (cm):</label>
+                    <input type="text" name="height" value="{{ height }}" 
+                           class="form-control {{ 'is-invalid' if errors.get('height') else '' }}" 
+                           placeholder="Ví dụ: 170">
+                    {% if errors.get('height') %}
+                        <div class="invalid-feedback d-block text-danger">
+                            {{ errors.get('height') }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Cân nặng (kg):</label>
+                    <input type="text" name="weight" value="{{ weight }}" 
+                           class="form-control {{ 'is-invalid' if errors.get('weight') else '' }}" 
+                           placeholder="Ví dụ: 65 hoặc 65,5">
+                    {% if errors.get('weight') %}
+                        <div class="invalid-feedback d-block text-danger">
+                            {{ errors.get('weight') }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Tính BMI</button>
+            </form>
+
+            {% if result %}
+                <div class="alert alert-{{ result.color_class }} mt-4 mb-0" role="alert">
+                    <h5 class="alert-heading mb-1">BMI: {{ result.bmi }}</h5>
+                    <p class="mb-1"><b>Phân loại:</b> {{ result.category }}</p>
+                    <hr>
+                    <p class="mb-0"><b>Cân nặng nên có:</b> {{ result.weight_range }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

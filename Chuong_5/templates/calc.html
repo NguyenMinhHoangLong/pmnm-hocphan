@@ -1,0 +1,42 @@
+{% extends "baseC5.html" %}
+
+{% block title %}Câu 1 - Máy tính{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <h3 class="text-center mb-3">Máy tính 2 số</h3>
+            <form method="POST" action="{{ url_for('calc') }}">
+                <div class="mb-3">
+                    <label class="form-label">Số a:</label>
+                    <input type="text" name="a" value="{{ values.a }}" class="form-control">
+                    {% if error.a %}<div class="text-danger small">{{ error.a }}</div>{% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phép toán:</label>
+                    <select name="op" class="form-select">
+                        <option value="+" {% if values.op == '+' %}selected{% endif %}>+</option>
+                        <option value="-" {% if values.op == '-' %}selected{% endif %}>-</option>
+                        <option value="*" {% if values.op == '*' %}selected{% endif %}>*</option>
+                        <option value="/" {% if values.op == '/' %}selected{% endif %}>/</option>
+                    </select>
+                    {% if error.op %}<div class="text-danger small">{{ error.op }}</div>{% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số b:</label>
+                    <input type="text" name="b" value="{{ values.b }}" class="form-control">
+                    {% if error.b %}<div class="text-danger small">{{ error.b }}</div>{% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Tính toán</button>
+            </form>
+
+            {% if kq != "" %}
+            <div class="alert alert-info mt-3 mb-0">
+                <strong>Kết quả:</strong> {{ kq }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
