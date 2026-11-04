@@ -171,6 +171,7 @@ app.secret_key = "chuong5_key_bao_mat"
 app.permanent_session_lifetime = timedelta(days=7)
 USERS = {"admin": "admin123",
          "an": "an123456"}
+app.config["USERS"] = USERS
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
